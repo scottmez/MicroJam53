@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://crbb0j6n0auq4"]
+[gd_scene load_steps=5 format=3 uid="uid://crbb0j6n0auq4"]
 
 [ext_resource type="PackedScene" uid="uid://48nqgstxk2y4" path="res://player.tscn" id="1_1oj5k"]
 [ext_resource type="Texture2D" uid="uid://bkbbftw7lysgn" path="res://icon.svg" id="2_yx7mw"]
 [ext_resource type="PackedScene" uid="uid://b0hsurc3bbuod" path="res://friend.tscn" id="3_ykeeq"]
+[ext_resource type="PackedScene" uid="uid://bwjup8rx2j37y" path="res://plane.tscn" id="4_6bm6p"]
 
 [node name="MainGame" type="Node2D"]
 
@@ -17,5 +18,13 @@ position = Vector2(-0.499981, -7.62939e-06)
 scale = Vector2(8.97656, 5.04688)
 texture = ExtResource("2_yx7mw")
 
-[node name="Friend" parent="." instance=ExtResource("3_ykeeq")]
-position = Vector2(-358, -203)
+[node name="Plane" parent="." instance=ExtResource("4_6bm6p")]
+position = Vector2(-8, -153)
+
+[node name="FriendNodes" type="Node2D" parent="."]
+position = Vector2(1192, 4)
+
+[node name="Friend" parent="FriendNodes" instance=ExtResource("3_ykeeq")]
+position = Vector2(-636, -5)
+
+[node name="Friend2" parent="FriendNodes" instance=ExtResource("3_ykeeq")]

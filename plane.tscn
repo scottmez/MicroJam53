@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://bwjup8rx2j37y"]
+
+[ext_resource type="Texture2D" uid="uid://p7tt3ydkhrq5" path="res://plane.png" id="1_s46f0"]
+[ext_resource type="Script" uid="uid://bxd4qpwecpe44" path="res://plane.gd" id="2_dpar4"]
+
+[node name="Plane" type="Sprite2D"]
+texture = ExtResource("1_s46f0")
+script = ExtResource("2_dpar4")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+offset_left = -319.0
+offset_top = 149.0
+offset_right = 321.0
+offset_bottom = 448.0
