@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://b0hsurc3bbuod"]
+[gd_scene load_steps=8 format=3 uid="uid://b0hsurc3bbuod"]
 
 [ext_resource type="Texture2D" uid="uid://cxki2bvxpjc30" path="res://eye_white.png" id="1_3hdib"]
 [ext_resource type="Script" uid="uid://7g0vcwoe1s5f" path="res://friend.gd" id="1_nvcv4"]
@@ -64,6 +64,9 @@ _data = {
 &"walk": SubResource("Animation_k2ghq")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_nvcv4"]
+radius = 202.002
+
 [node name="Friend" type="Node2D"]
 script = ExtResource("1_nvcv4")
 
@@ -88,3 +91,10 @@ texture = ExtResource("1_3hdib")
 
 [node name="iris" type="Sprite2D" parent="white1"]
 texture = ExtResource("2_nvcv4")
+
+[node name="Interaction Area" type="Area2D" parent="."]
+unique_name_in_owner = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interaction Area"]
+position = Vector2(28, 0)
+shape = SubResource("CircleShape2D_nvcv4")
