@@ -4,5 +4,6 @@ extends Node2D
 @onready var ap = $AnimationPlayer
 
 func _ready():
-	ap.play("walk")
+	#ap.play("walk")
+	pass
 	
