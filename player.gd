@@ -2,6 +2,11 @@ class_name Player
 extends CharacterBody2D
 
 @onready var ap = $AnimationPlayer
+@onready var iris_2 = $white2/iris2
+@onready var iris = $white1/iris
+
+func _ready():
+	GameManager.player = self
 
 func _physics_process(delta):
 	var direction = Input.get_vector("move_left","move_right","move_up","move_down")
@@ -18,3 +23,12 @@ func _physics_process(delta):
 	
 func walk_eyes():
 	ap.play("walk")
+	
+func look_at_friend(pos : Vector2): 
+	#pos is position of nearest friend
+	var vec_to_nearest = pos - global_position
+	vec_to_nearest = vec_to_nearest.normalized() * 10 #10 is # pixels iris will move
+	iris.position = vec_to_nearest + Vector2(-4,1)
+	iris_2.position = vec_to_nearest + Vector2(-5,1)
+	#could make smoother later, but its pretty good 
+	
