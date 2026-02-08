@@ -1,7 +1,7 @@
 class_name IntroCine
 extends Node2D
 
-const SUNSET_COLOR := Color("#c6b39458")
+const SUNSET_COLOR := Color("#c6b39478")
 const NIGHT_COLOR := Color("#0b0f2bb5")
 const BLACKOUT_COLOR := Color("#000000")
 
@@ -69,7 +69,7 @@ func _lightning_strike() -> void:
 
 	flash_tween.tween_interval(0.08)
 	flash_tween.tween_callback(func() -> void: lightning.visible = true)
-	flash_tween.tween_property(lightning_flash, "color:a", 0.7, 0.04)
+	flash_tween.tween_property(lightning_flash, "color:a", 0.7, 0.06)
 	flash_tween.tween_callback(func() -> void: lightning.visible = false)
 	flash_tween.tween_property(lightning_flash, "color:a", 0.0, 0.2)
 

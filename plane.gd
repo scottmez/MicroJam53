@@ -1,4 +1,4 @@
-extends Sprite2D
+extends Node2D
 const friend = preload("res://friend.tscn")
 @onready var hb : HBoxContainer =  %HBoxContainer
 
