@@ -1,6 +1,8 @@
 class_name Player
 extends CharacterBody2D
 
+const steps_audio = preload("res://Sound/steps.mp3")
+
 @onready var ap = $AnimationPlayer
 @onready var iris_2 = $white2/iris2
 @onready var iris = $white1/iris
@@ -33,6 +35,8 @@ func _physics_process(delta):
 	
 func walk_eyes():
 	ap.play("walk")
+	if not SfxPlayer.is_playing_stream(steps_audio):
+		SfxPlayer.play(steps_audio)
 	text_panel.visible = false
 	
 func look_at_friend(pos : Vector2): 
