@@ -3,6 +3,10 @@ extends Node2D
 
 @onready var ap = $AnimationPlayer
 @onready var ia = %"Interaction Area"
+@onready var iris_2 = $white2/iris2
+@onready var iris = $white1/iris
+@onready var p = $"../../Player"
+
 var player : Player = null
 var collected : bool = false
 
@@ -25,3 +29,16 @@ func _input(event):
 		Event.friend_collected.emit() 
 		
 		queue_free() #replace with making friend go to plane
+		
+func _process(_delta):
+	look_at_player()
+
+func look_at_player():
+	if p:
+		var vec_to_player = p.global_position - global_position
+		vec_to_player = vec_to_player.normalized() * 10 #10 is # pixels iris will move
+		iris.position = vec_to_player + Vector2(-4,1)
+		iris_2.position = vec_to_player + Vector2(-5,1)
+	else:
+		iris.position = Vector2(-4,1)
+		iris_2.position = Vector2(-5,1)
