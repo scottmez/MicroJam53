@@ -1,10 +1,36 @@
-[gd_scene load_steps=6 format=3 uid="uid://crbb0j6n0auq4"]
+[gd_scene load_steps=12 format=3 uid="uid://crbb0j6n0auq4"]
 
 [ext_resource type="PackedScene" uid="uid://48nqgstxk2y4" path="res://player.tscn" id="1_1oj5k"]
 [ext_resource type="Texture2D" uid="uid://bkbbftw7lysgn" path="res://icon.svg" id="2_yx7mw"]
 [ext_resource type="PackedScene" uid="uid://b0hsurc3bbuod" path="res://friend.tscn" id="3_ykeeq"]
+[ext_resource type="Texture2D" uid="uid://b007a45axkfl6" path="res://IntroScenes/smoke.png" id="4_2pltu"]
 [ext_resource type="PackedScene" uid="uid://bwjup8rx2j37y" path="res://plane.tscn" id="4_6bm6p"]
 [ext_resource type="Script" uid="uid://cwyqiahlf1ukj" path="res://friend_nodes.gd" id="4_dugkq"]
+
+[sub_resource type="Curve" id="Curve_2pltu"]
+_data = [Vector2(0, 0), 0.0, 3.0, 0, 1, Vector2(0.15, 0.8), 0.0, 0.0, 0, 0, Vector2(0.7, 0.5), -0.5, -0.5, 0, 0, Vector2(1, 0), -1.5, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_j8suj"]
+curve = SubResource("Curve_2pltu")
+
+[sub_resource type="Gradient" id="Gradient_f52ns"]
+offsets = PackedFloat32Array(0, 0.381657, 1)
+colors = PackedColorArray(0.764706, 0.760784, 0, 1, 0.806118, 0.516058, 0.278187, 1, 1, 0.344606, 0.162787, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_l5ukw"]
+gradient = SubResource("Gradient_f52ns")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2pltu"]
+direction = Vector3(-1, -0.3, 0)
+spread = 18.0
+initial_velocity_min = 100.0
+initial_velocity_max = 130.0
+gravity = Vector3(0, -8, 0)
+scale_min = 5.0
+scale_max = 10.0
+color_ramp = SubResource("GradientTexture1D_l5ukw")
+alpha_curve = SubResource("CurveTexture_j8suj")
 
 [node name="MainGame" type="Node2D"]
 
@@ -21,6 +47,33 @@ texture = ExtResource("2_yx7mw")
 
 [node name="Plane" parent="." instance=ExtResource("4_6bm6p")]
 position = Vector2(-8, -153)
+
+[node name="FireParticle1" type="GPUParticles2D" parent="Plane"]
+position = Vector2(744, -122)
+rotation = 0.921942
+amount = 36
+texture = ExtResource("4_2pltu")
+lifetime = 2.5
+randomness = 0.4
+process_material = SubResource("ParticleProcessMaterial_2pltu")
+
+[node name="FireParticle2" type="GPUParticles2D" parent="Plane"]
+position = Vector2(603, -481)
+rotation = 0.921942
+amount = 36
+texture = ExtResource("4_2pltu")
+lifetime = 2.5
+randomness = 0.4
+process_material = SubResource("ParticleProcessMaterial_2pltu")
+
+[node name="FireParticle3" type="GPUParticles2D" parent="Plane"]
+position = Vector2(-116, -239)
+rotation = 0.921942
+amount = 36
+texture = ExtResource("4_2pltu")
+lifetime = 2.5
+randomness = 0.4
+process_material = SubResource("ParticleProcessMaterial_2pltu")
 
 [node name="FriendNodes" type="Node2D" parent="."]
 unique_name_in_owner = true
