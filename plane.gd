@@ -10,6 +10,7 @@ func on_friend_collected():
 	var contr : Control = Control.new()
 	contr.custom_minimum_size.x = 120
 	var new_friend = friend.instantiate()
+	new_friend.collected = true
 	hb.add_child(contr)
 	contr.add_child(new_friend)
 	
