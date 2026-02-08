@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://c1gqifwqfsfpl"]
+
+[ext_resource type="Shader" uid="uid://5qwj0scwrpfx" path="res://collision_shader.gdshader" id="1_ia1lp"]
+[ext_resource type="Script" uid="uid://uoyf5a8l4vsh" path="res://collision_copy.gd" id="1_sasra"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2nij2"]
+shader = ExtResource("1_ia1lp")
+
+[node name="Node2D" type="StaticBody2D"]
+script = ExtResource("1_sasra")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+material = SubResource("ShaderMaterial_2nij2")
+position = Vector2(-7, -42)
+polygon = PackedVector2Array(144, 277, 207, 501, 453, 392, 371, 206)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(799, 193, 809, 511, 1023, 509, 991, 196)

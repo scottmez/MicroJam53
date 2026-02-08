@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://crbb0j6n0auq4"]
+[gd_scene load_steps=18 format=3 uid="uid://crbb0j6n0auq4"]
 
 [ext_resource type="PackedScene" uid="uid://48nqgstxk2y4" path="res://player.tscn" id="1_1oj5k"]
 [ext_resource type="Script" uid="uid://boybpps22pcwd" path="res://main_game.gd" id="1_f52ns"]
@@ -7,7 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://b007a45axkfl6" path="res://IntroScenes/smoke.png" id="4_2pltu"]
 [ext_resource type="PackedScene" uid="uid://bwjup8rx2j37y" path="res://plane.tscn" id="4_6bm6p"]
 [ext_resource type="Script" path="res://friend_nodes.gd" id="4_dugkq"]
-[ext_resource type="Shader" uid="uid://deyfl02kywa0b" path="res://obstacle.gdshader" id="7_f52ns"]
+[ext_resource type="Shader" uid="uid://5qwj0scwrpfx" path="res://collision_shader.gdshader" id="8_4srsv"]
+[ext_resource type="Script" uid="uid://uoyf5a8l4vsh" path="res://collision_copy.gd" id="8_mf81u"]
 
 [sub_resource type="Gradient" id="Gradient_light"]
 offsets = PackedFloat32Array(0, 0.4, 1)
@@ -47,7 +48,7 @@ color_ramp = SubResource("GradientTexture1D_l5ukw")
 alpha_curve = SubResource("CurveTexture_j8suj")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_l5ukw"]
-shader = ExtResource("7_f52ns")
+shader = ExtResource("8_4srsv")
 
 [node name="MainGame" type="Node2D"]
 script = ExtResource("1_f52ns")
@@ -148,7 +149,7 @@ position = Vector2(5043, -3619)
 position = Vector2(4744, 2266)
 
 [node name="Friend13" parent="FriendNodes" instance=ExtResource("3_ykeeq")]
-position = Vector2(1618, 3730)
+position = Vector2(-1494, -10135)
 
 [node name="Lighting" type="Node2D" parent="."]
 
@@ -170,11 +171,11 @@ color = Color(1, 0.6, 0.2, 1)
 energy = 4.0
 texture = SubResource("GradientTexture2D_light")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="Node2D" type="StaticBody2D" parent="."]
+script = ExtResource("8_mf81u")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D"]
+polygon = PackedVector2Array(1264, -521, 1145, -371, 1300, -371, 1612, -382, 2371, -416, 3367, -1827, 3937, -1876, 3937, -2364, 3538, -1949, 3384, -2592, 5573, -3195, 5734, -3886, 6907, -3950, 5134, -1044, 5114, 502, 5144, 2915, 6119, 1034, 7035, 3053, 4641, 4639, 2543, 3063, 2120, 4609, 3676, 7564, 731, 7663, -481, 5516, -3751, 5545, -2145, 7426, -3692, 7889, -5169, 5949, -2057, 1379, -4539, 1408, -3002, 2590, -3662, 3565, -5268, 2157, -7641, 3664, -7632, -2256, -2480, -542, -1672, -2935, -3495, -1034, -5701, -1931, -3445, -2827, -3337, -5201, -5790, -5004, -5908, -6471, -3337, -5654, -3475, -8668, -1426, -10490, 908, -10618, -1180, -8491, -1219, -7003, 1154, -7072, -530, -7998, 22, -8717, 1588, -7506, 3518, -7555, 1824, -5605, 2474, -4797, 3715, -6875, 4602, -5703, 7069, -6071, 13626, -14157, -11583, -14066, -11810, 10328, 12540, 10238, 11910, -10957)
+
+[node name="Polygon2D" type="Polygon2D" parent="Node2D"]
 material = SubResource("ShaderMaterial_l5ukw")
-position = Vector2(487, 1614)
-rotation = 1.50536
-scale = Vector2(0.999864, 0.966301)
-polygon = PackedVector2Array(-1730, -772, -1753, -344, -1294, -513)
