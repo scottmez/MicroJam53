@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://crbb0j6n0auq4"]
+[gd_scene load_steps=14 format=3 uid="uid://crbb0j6n0auq4"]
 
 [ext_resource type="PackedScene" uid="uid://48nqgstxk2y4" path="res://player.tscn" id="1_1oj5k"]
 [ext_resource type="Texture2D" uid="uid://bkbbftw7lysgn" path="res://icon.svg" id="2_yx7mw"]
@@ -6,6 +6,18 @@
 [ext_resource type="Texture2D" uid="uid://b007a45axkfl6" path="res://IntroScenes/smoke.png" id="4_2pltu"]
 [ext_resource type="PackedScene" uid="uid://bwjup8rx2j37y" path="res://plane.tscn" id="4_6bm6p"]
 [ext_resource type="Script" uid="uid://cwyqiahlf1ukj" path="res://friend_nodes.gd" id="4_dugkq"]
+
+[sub_resource type="Gradient" id="Gradient_light"]
+offsets = PackedFloat32Array(0, 0.4, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.5, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_light"]
+gradient = SubResource("Gradient_light")
+width = 512
+height = 512
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.4, 0)
 
 [sub_resource type="Curve" id="Curve_2pltu"]
 _data = [Vector2(0, 0), 0.0, 3.0, 0, 1, Vector2(0.15, 0.8), 0.0, 0.0, 0, 0, Vector2(0.7, 0.5), -0.5, -0.5, 0, 0, Vector2(1, 0), -1.5, 0.0, 0, 0]
@@ -34,7 +46,15 @@ alpha_curve = SubResource("CurveTexture_j8suj")
 
 [node name="MainGame" type="Node2D"]
 
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.099986, 0.099986, 0.099986, 1)
+
 [node name="Player" parent="." instance=ExtResource("1_1oj5k")]
+
+[node name="PlayerLight" type="PointLight2D" parent="Player"]
+energy = 0.8
+texture = SubResource("GradientTexture2D_light")
+texture_scale = 2.0
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 
@@ -84,3 +104,23 @@ script = ExtResource("4_dugkq")
 position = Vector2(-636, -5)
 
 [node name="Friend2" parent="FriendNodes" instance=ExtResource("3_ykeeq")]
+
+[node name="Lighting" type="Node2D" parent="."]
+
+[node name="Light1" type="PointLight2D" parent="Lighting"]
+position = Vector2(725, -301)
+color = Color(1, 0.6, 0.2, 1)
+energy = 4.0
+texture = SubResource("GradientTexture2D_light")
+
+[node name="Light2" type="PointLight2D" parent="Lighting"]
+position = Vector2(594, -634)
+color = Color(1, 0.6, 0.2, 1)
+energy = 4.0
+texture = SubResource("GradientTexture2D_light")
+
+[node name="Light3" type="PointLight2D" parent="Lighting"]
+position = Vector2(-130, -395)
+color = Color(1, 0.6, 0.2, 1)
+energy = 4.0
+texture = SubResource("GradientTexture2D_light")
