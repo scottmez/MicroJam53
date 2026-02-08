@@ -1,6 +1,8 @@
 class_name Friend
 extends Node2D
 
+@export var found_message := "You found me!"
+
 @onready var ap = $AnimationPlayer
 @onready var ia = %"Interaction Area"
 @onready var iris_2 = $white2/iris2
@@ -27,7 +29,7 @@ func _input(event):
 	if event.is_action_pressed("interact") and player and not collected:
 		collected = true
 		Event.friend_collected.emit() 
-		
+		player.display_text_bubble(found_message)
 		queue_free() #replace with making friend go to plane
 		
 func _process(_delta):

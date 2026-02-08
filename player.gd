@@ -4,13 +4,20 @@ extends CharacterBody2D
 @onready var ap = $AnimationPlayer
 @onready var iris_2 = $white2/iris2
 @onready var iris = $white1/iris
+@onready var text_panel = %TextPanel
+
+var displaying_text : bool = true
 
 func _ready():
 	GameManager.player = self
+	text_panel.displaying.connect(func() -> void: 
+		displaying_text = true)
+	text_panel.finished_displaying.connect(func() -> void: displaying_text = false)
+	display_text_bubble("I need to go find my friends.")
 
 func _physics_process(delta):
 	var direction = Input.get_vector("move_left","move_right","move_up","move_down")
-	if direction.length_squared() > 0.0: #test to see if any inputs are being pressed
+	if direction.length_squared() > 0.0 and not displaying_text: #test to see if any inputs are being pressed
 		walk_eyes()
 	#else: 
 	#would be nice to find a way to make the eyes go to neutral faster when we stop moving but stop is too fast
@@ -18,11 +25,15 @@ func _physics_process(delta):
 	var speed = 800
 	var acceleration = 5000 #scott likey 5k
 	var desired_velocity = direction * speed 
-	velocity = velocity.move_toward(desired_velocity, acceleration * delta)
+	if not displaying_text:
+		velocity = velocity.move_toward(desired_velocity, acceleration * delta)
+	else:
+		velocity = Vector2(0,0)
 	move_and_slide()
 	
 func walk_eyes():
 	ap.play("walk")
+	text_panel.visible = false
 	
 func look_at_friend(pos : Vector2): 
 	#pos is position of nearest friend
@@ -31,4 +42,6 @@ func look_at_friend(pos : Vector2):
 	iris.position = vec_to_nearest + Vector2(-4,1)
 	iris_2.position = vec_to_nearest + Vector2(-5,1)
 	#could make smoother later, but its pretty good 
-	
+
+func display_text_bubble(text : String):
+	text_panel.display_text(text)
