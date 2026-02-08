@@ -1,0 +1,113 @@
+[gd_scene load_steps=14 format=3 uid="uid://cpswevphhuuj"]
+
+[ext_resource type="Script" uid="uid://cieakpabb2m62" path="res://IntroScenes/intro_cine.gd" id="1_os7el"]
+[ext_resource type="Texture2D" uid="uid://p7tt3ydkhrq5" path="res://plane.png" id="2_3sf64"]
+[ext_resource type="Texture2D" uid="uid://crsj6pu65c072" path="res://IntroScenes/cloud1.png" id="2_4x6ik"]
+[ext_resource type="Texture2D" uid="uid://dha1f2kmx2rui" path="res://IntroScenes/cloud2.png" id="3_xqpij"]
+[ext_resource type="Texture2D" uid="uid://dmi7qbtrnxd3" path="res://IntroScenes/cloud3.png" id="4_j8suj"]
+[ext_resource type="Texture2D" uid="uid://2wtk8j5jsvo" path="res://IntroScenes/cloud4.png" id="5_ykq77"]
+[ext_resource type="Texture2D" uid="uid://dy7cxr38x54ad" path="res://IntroScenes/cloud5.png" id="6_csj8f"]
+[ext_resource type="Texture2D" uid="uid://cudmj8dy5xbma" path="res://IntroScenes/cloud6.png" id="7_hfx35"]
+[ext_resource type="Texture2D" uid="uid://dfubdcgtdgyk8" path="res://iris.png" id="9_xqpij"]
+[ext_resource type="Texture2D" uid="uid://vre1cox5tf" path="res://IntroScenes/lightning.png" id="10_j8suj"]
+
+[sub_resource type="Curve" id="Curve_smoke_alpha"]
+_data = [Vector2(0, 0), 0.0, 3.0, 0, 1, Vector2(0.15, 0.8), 0.0, 0.0, 0, 0, Vector2(0.7, 0.5), -0.5, -0.5, 0, 0, Vector2(1, 0), -1.5, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_smoke_alpha"]
+curve = SubResource("Curve_smoke_alpha")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_smoke"]
+direction = Vector3(-1, -0.3, 0)
+spread = 18.0
+initial_velocity_min = 100.0
+initial_velocity_max = 130.0
+gravity = Vector3(0, -8, 0)
+scale_min = 3.0
+scale_max = 7.0
+color = Color(0.54902, 0.54902, 0.54902, 1)
+alpha_curve = SubResource("CurveTexture_smoke_alpha")
+
+[node name="IntroCine" type="Node2D"]
+script = ExtResource("1_os7el")
+
+[node name="Clouds" type="Node2D" parent="."]
+
+[node name="cloud1" type="Sprite2D" parent="Clouds"]
+position = Vector2(672, 528)
+texture = ExtResource("2_4x6ik")
+
+[node name="cloud2" type="Sprite2D" parent="Clouds"]
+position = Vector2(885, 112)
+texture = ExtResource("3_xqpij")
+
+[node name="cloud3" type="Sprite2D" parent="Clouds"]
+position = Vector2(232, 217)
+texture = ExtResource("4_j8suj")
+
+[node name="cloud4" type="Sprite2D" parent="Clouds"]
+position = Vector2(-180, 542)
+texture = ExtResource("5_ykq77")
+
+[node name="cloud5" type="Sprite2D" parent="Clouds"]
+position = Vector2(-179, 338)
+texture = ExtResource("6_csj8f")
+
+[node name="cloud6" type="Sprite2D" parent="Clouds"]
+position = Vector2(-239, 125)
+texture = ExtResource("7_hfx35")
+
+[node name="Plane" type="Sprite2D" parent="."]
+position = Vector2(555, 351)
+rotation = 0.10632
+texture = ExtResource("2_3sf64")
+
+[node name="SmokeParticle1" type="GPUParticles2D" parent="Plane"]
+position = Vector2(108, 66)
+rotation = -0.261799
+emitting = false
+amount = 36
+texture = ExtResource("9_xqpij")
+lifetime = 2.5
+randomness = 0.4
+process_material = SubResource("ParticleProcessMaterial_smoke")
+
+[node name="SmokeParticle2" type="GPUParticles2D" parent="Plane"]
+position = Vector2(62, -105)
+rotation = -0.261799
+emitting = false
+amount = 36
+texture = ExtResource("9_xqpij")
+lifetime = 2.5
+randomness = 0.4
+process_material = SubResource("ParticleProcessMaterial_smoke")
+
+[node name="Lightning" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(613, 184)
+texture = ExtResource("10_j8suj")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Sky" type="ColorRect" parent="CanvasLayer"]
+unique_name_in_owner = true
+z_index = -1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.0431373, 0.0588235, 0.168627, 0.709804)
+
+[node name="LightningFlash" type="ColorRect" parent="CanvasLayer"]
+unique_name_in_owner = true
+z_index = 10
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.901961, 0.85098, 1, 0)
