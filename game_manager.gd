@@ -8,7 +8,7 @@ func _process(_delta):
 	if friend_nodes and friend_nodes.get_child_count() > 0: #
 		closest = find_closest_friend()
 		player.look_at_friend(closest.global_position)
-	else:
+	elif player:
 		player.look_at_friend(player.global_position)
 
 func find_closest_friend():
