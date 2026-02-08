@@ -1,11 +1,12 @@
-[gd_scene load_steps=14 format=3 uid="uid://crbb0j6n0auq4"]
+[gd_scene load_steps=16 format=3 uid="uid://crbb0j6n0auq4"]
 
 [ext_resource type="PackedScene" uid="uid://48nqgstxk2y4" path="res://player.tscn" id="1_1oj5k"]
 [ext_resource type="Texture2D" uid="uid://bkbbftw7lysgn" path="res://icon.svg" id="2_yx7mw"]
 [ext_resource type="PackedScene" uid="uid://b0hsurc3bbuod" path="res://friend.tscn" id="3_ykeeq"]
 [ext_resource type="Texture2D" uid="uid://b007a45axkfl6" path="res://IntroScenes/smoke.png" id="4_2pltu"]
 [ext_resource type="PackedScene" uid="uid://bwjup8rx2j37y" path="res://plane.tscn" id="4_6bm6p"]
-[ext_resource type="Script" uid="uid://cwyqiahlf1ukj" path="res://friend_nodes.gd" id="4_dugkq"]
+[ext_resource type="Script" path="res://friend_nodes.gd" id="4_dugkq"]
+[ext_resource type="Shader" uid="uid://deyfl02kywa0b" path="res://obstacle.gdshader" id="7_f52ns"]
 
 [sub_resource type="Gradient" id="Gradient_light"]
 offsets = PackedFloat32Array(0, 0.4, 1)
@@ -43,6 +44,9 @@ scale_min = 5.0
 scale_max = 10.0
 color_ramp = SubResource("GradientTexture1D_l5ukw")
 alpha_curve = SubResource("CurveTexture_j8suj")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_l5ukw"]
+shader = ExtResource("7_f52ns")
 
 [node name="MainGame" type="Node2D"]
 
@@ -105,6 +109,45 @@ position = Vector2(-636, -5)
 
 [node name="Friend2" parent="FriendNodes" instance=ExtResource("3_ykeeq")]
 
+[node name="Friend3" parent="FriendNodes" instance=ExtResource("3_ykeeq")]
+position = Vector2(-4639, -1674)
+
+[node name="Friend4" parent="FriendNodes" instance=ExtResource("3_ykeeq")]
+position = Vector2(-8368, -1703)
+
+[node name="Friend5" parent="FriendNodes" instance=ExtResource("3_ykeeq")]
+position = Vector2(-8367, 2763)
+
+[node name="Friend6" parent="FriendNodes" instance=ExtResource("3_ykeeq")]
+position = Vector2(-4672, 2817)
+
+[node name="Friend7" parent="FriendNodes" instance=ExtResource("3_ykeeq")]
+position = Vector2(-4473, 6833)
+
+[node name="Friend8" parent="FriendNodes" instance=ExtResource("3_ykeeq")]
+position = Vector2(1557, 6882)
+
+[node name="Friend9" parent="FriendNodes" instance=ExtResource("3_ykeeq")]
+position = Vector2(-5991, -5642)
+
+[node name="Friend10" parent="FriendNodes" instance=ExtResource("3_ykeeq")]
+position = Vector2(-1054, -8032)
+
+[node name="Friend11" parent="FriendNodes" instance=ExtResource("3_ykeeq")]
+position = Vector2(2429, -5851)
+
+[node name="Friend12" parent="FriendNodes" instance=ExtResource("3_ykeeq")]
+position = Vector2(2413, -2095)
+
+[node name="Friend14" parent="FriendNodes" instance=ExtResource("3_ykeeq")]
+position = Vector2(5043, -3619)
+
+[node name="Friend15" parent="FriendNodes" instance=ExtResource("3_ykeeq")]
+position = Vector2(4744, 2266)
+
+[node name="Friend13" parent="FriendNodes" instance=ExtResource("3_ykeeq")]
+position = Vector2(1618, 3730)
+
 [node name="Lighting" type="Node2D" parent="."]
 
 [node name="Light1" type="PointLight2D" parent="Lighting"]
@@ -124,3 +167,12 @@ position = Vector2(-130, -395)
 color = Color(1, 0.6, 0.2, 1)
 energy = 4.0
 texture = SubResource("GradientTexture2D_light")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+material = SubResource("ShaderMaterial_l5ukw")
+position = Vector2(487, 1614)
+rotation = 1.50536
+scale = Vector2(0.999864, 0.966301)
+polygon = PackedVector2Array(-1730, -772, -1753, -344, -1294, -513)
