@@ -1,6 +1,7 @@
 [gd_scene load_steps=16 format=3 uid="uid://crbb0j6n0auq4"]
 
 [ext_resource type="PackedScene" uid="uid://48nqgstxk2y4" path="res://player.tscn" id="1_1oj5k"]
+[ext_resource type="Script" uid="uid://boybpps22pcwd" path="res://main_game.gd" id="1_f52ns"]
 [ext_resource type="Texture2D" uid="uid://bkbbftw7lysgn" path="res://icon.svg" id="2_yx7mw"]
 [ext_resource type="PackedScene" uid="uid://b0hsurc3bbuod" path="res://friend.tscn" id="3_ykeeq"]
 [ext_resource type="Texture2D" uid="uid://b007a45axkfl6" path="res://IntroScenes/smoke.png" id="4_2pltu"]
@@ -49,6 +50,7 @@ alpha_curve = SubResource("CurveTexture_j8suj")
 shader = ExtResource("7_f52ns")
 
 [node name="MainGame" type="Node2D"]
+script = ExtResource("1_f52ns")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.099986, 0.099986, 0.099986, 1)
