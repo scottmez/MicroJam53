@@ -3,15 +3,21 @@
 [ext_resource type="Texture2D" uid="uid://p7tt3ydkhrq5" path="res://plane.png" id="1_s46f0"]
 [ext_resource type="Script" uid="uid://bxd4qpwecpe44" path="res://plane.gd" id="2_dpar4"]
 
-[node name="Plane" type="Sprite2D"]
-texture = ExtResource("1_s46f0")
+[node name="Plane" type="Node2D"]
 script = ExtResource("2_dpar4")
+
+[node name="PlaneSprite" type="Sprite2D" parent="."]
+position = Vector2(459.839, -244.5)
+scale = Vector2(2.12156, 2.12156)
+texture = ExtResource("1_s46f0")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 692.0
+offset_top = -142.0
+offset_right = 732.0
+offset_bottom = -102.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control"]
 unique_name_in_owner = true

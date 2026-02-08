@@ -8,14 +8,14 @@
 [ext_resource type="Texture2D" uid="uid://2wtk8j5jsvo" path="res://IntroScenes/cloud4.png" id="5_ykq77"]
 [ext_resource type="Texture2D" uid="uid://dy7cxr38x54ad" path="res://IntroScenes/cloud5.png" id="6_csj8f"]
 [ext_resource type="Texture2D" uid="uid://cudmj8dy5xbma" path="res://IntroScenes/cloud6.png" id="7_hfx35"]
-[ext_resource type="Texture2D" uid="uid://dfubdcgtdgyk8" path="res://iris.png" id="9_xqpij"]
+[ext_resource type="Texture2D" uid="uid://b007a45axkfl6" path="res://IntroScenes/smoke.png" id="9_ykq77"]
 [ext_resource type="Texture2D" uid="uid://vre1cox5tf" path="res://IntroScenes/lightning.png" id="10_j8suj"]
 
 [sub_resource type="Curve" id="Curve_smoke_alpha"]
 _data = [Vector2(0, 0), 0.0, 3.0, 0, 1, Vector2(0.15, 0.8), 0.0, 0.0, 0, 0, Vector2(0.7, 0.5), -0.5, -0.5, 0, 0, Vector2(1, 0), -1.5, 0.0, 0, 0]
 point_count = 4
 
-[sub_resource type="CurveTexture" id="CurveTexture_smoke_alpha"]
+[sub_resource type="CurveTexture" id="CurveTexture_j8suj"]
 curve = SubResource("Curve_smoke_alpha")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_smoke"]
@@ -26,13 +26,14 @@ initial_velocity_max = 130.0
 gravity = Vector3(0, -8, 0)
 scale_min = 3.0
 scale_max = 7.0
-color = Color(0.54902, 0.54902, 0.54902, 1)
-alpha_curve = SubResource("CurveTexture_smoke_alpha")
+color = Color(0.804743, 0.804743, 0.804743, 1)
+alpha_curve = SubResource("CurveTexture_j8suj")
 
 [node name="IntroCine" type="Node2D"]
 script = ExtResource("1_os7el")
 
 [node name="Clouds" type="Node2D" parent="."]
+z_index = -2
 
 [node name="cloud1" type="Sprite2D" parent="Clouds"]
 position = Vector2(672, 528)
@@ -68,17 +69,18 @@ position = Vector2(108, 66)
 rotation = -0.261799
 emitting = false
 amount = 36
-texture = ExtResource("9_xqpij")
+texture = ExtResource("9_ykq77")
 lifetime = 2.5
 randomness = 0.4
 process_material = SubResource("ParticleProcessMaterial_smoke")
 
 [node name="SmokeParticle2" type="GPUParticles2D" parent="Plane"]
-position = Vector2(62, -105)
+z_index = -1
+position = Vector2(60.3055, -103.987)
 rotation = -0.261799
 emitting = false
 amount = 36
-texture = ExtResource("9_xqpij")
+texture = ExtResource("9_ykq77")
 lifetime = 2.5
 randomness = 0.4
 process_material = SubResource("ParticleProcessMaterial_smoke")
@@ -99,7 +101,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-color = Color(0.0431373, 0.0588235, 0.168627, 0.709804)
+color = Color(0.776471, 0.701961, 0.580392, 0.470588)
 
 [node name="LightningFlash" type="ColorRect" parent="CanvasLayer"]
 unique_name_in_owner = true
