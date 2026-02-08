@@ -72,13 +72,10 @@ script = ExtResource("1_nvcv4")
 
 [node name="white2" type="Sprite2D" parent="."]
 position = Vector2(55, 0)
-scale = Vector2(-1, 1)
 texture = ExtResource("1_3hdib")
 
 [node name="iris2" type="Sprite2D" parent="white2"]
-position = Vector2(9, 1)
-rotation = 3.14159
-scale = Vector2(1, -1)
+position = Vector2(-5, 1)
 texture = ExtResource("2_nvcv4")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -90,6 +87,7 @@ libraries = {
 texture = ExtResource("1_3hdib")
 
 [node name="iris" type="Sprite2D" parent="white1"]
+position = Vector2(-4, 1)
 texture = ExtResource("2_nvcv4")
 
 [node name="Interaction Area" type="Area2D" parent="."]
