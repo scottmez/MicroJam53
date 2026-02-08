@@ -7,6 +7,7 @@
 script = ExtResource("2_dpar4")
 
 [node name="PlaneSprite" type="Sprite2D" parent="."]
+modulate = Color(0.0214346, 0.0214346, 0.0214346, 1)
 position = Vector2(459.839, -244.5)
 scale = Vector2(2.12156, 2.12156)
 texture = ExtResource("1_s46f0")
