@@ -49,6 +49,11 @@ alpha_curve = SubResource("CurveTexture_j8suj")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_l5ukw"]
 shader = ExtResource("8_4srsv")
+shader_parameter/wave_strength = 6.0
+shader_parameter/wave_speed = 1.2
+shader_parameter/wave_scale = 20.0
+shader_parameter/deep_color = Color(0, 0.2, 0.4, 1)
+shader_parameter/shallow_color = Color(0, 0.5, 0.7, 1)
 
 [node name="MainGame" type="Node2D"]
 script = ExtResource("1_f52ns")
