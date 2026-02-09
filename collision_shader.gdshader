@@ -19,7 +19,7 @@ void fragment() {
 
     // Vertical gradient (top = shallow, bottom = deep)
     float depth = clamp(uv.y, 0.0, 1.0);
-    vec4 water_color = mix(shallow_color, deep_color, depth);
+    vec4 water_color = mix(shallow_color, deep_color*.1, depth);
 
     COLOR = water_color;
 }
