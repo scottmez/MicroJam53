@@ -1,5 +1,7 @@
 extends Node2D
 
+const night_music = preload("res://Sound/night_music.mp3")
+
 @onready var friend_nodes = %FriendNodes
 var friends_remaining = 1
 #we need a reference to all lights to turn them off to get the fade to black effect
@@ -15,6 +17,7 @@ var fade_time : float  = 4.0
 func _ready():
 	friends_remaining = friend_nodes.get_child_count()
 	Event.friend_collected.connect(on_friend_collected)
+	MusicPlayer.play(night_music)
 	
 #when friends_remaining == 0: transition to end scene
 func on_friend_collected():

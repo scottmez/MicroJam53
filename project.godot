@@ -19,6 +19,8 @@ config/icon="res://icon.svg"
 
 Event="*res://event.gd"
 GameManager="*res://game_manager.gd"
+MusicPlayer="*res://Sound/music_player.tscn"
+SfxPlayer="*res://Sound/sfx_player.tscn"
 
 [input]
 

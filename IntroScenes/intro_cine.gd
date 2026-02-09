@@ -4,6 +4,10 @@ extends Node2D
 const SUNSET_COLOR := Color("#c6b39478")
 const NIGHT_COLOR := Color("#0b0f2bb5")
 const BLACKOUT_COLOR := Color("#000000")
+const flying_sfx = preload("res://Sound/FlyingSFX.mp3")
+const thunder_sfx = preload("res://Sound/ThunderSFX.mp3")
+const crash_sfx = preload("res://Sound/metal_pipe.mp3")
+const plane_fall_sfx = preload("res://Sound/PlaneFallSFX.mp3")
 
 @export var sky_transition_time: float = 14.0
 @export var plane_down_time: float = 2.2
@@ -46,6 +50,7 @@ func _update_sky() -> void:
 	get_tree().create_timer(sky_transition_time - 1.0).timeout.connect(_lightning_strike)
 	
 func _start_plane_flight() -> void:
+	SfxPlayer.play(flying_sfx)
 	var base_y := plane.position.y
 	bob.tween_property(plane, "position:y", base_y - 8.0, 1.6).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 	bob.tween_property(plane, "position:y", base_y + 8.0, 1.6).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
@@ -54,11 +59,13 @@ func _plane_down():
 	bob.kill()
 	smoke_particle_1.emitting = true
 	smoke_particle_2.emitting = true
+	SfxPlayer.play(plane_fall_sfx)
 	var target_y := _viewport_size.y + plane_down_offset
 	var tween := create_tween()
 	tween.tween_property(plane, "position:y", target_y, plane_down_time).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
 	tween.finished.connect(func() -> void:
 		sky.color = BLACKOUT_COLOR
+		SfxPlayer.play(crash_sfx)
 		get_tree().create_timer(1.0).timeout.connect(func() -> void: get_tree().change_scene_to_file("res://main_game.tscn"))
 	)
 
@@ -66,13 +73,16 @@ func _lightning_strike() -> void:
 	var flash_tween := create_tween()
 	flash_tween.tween_property(lightning_flash, "color:a", 0.8, 0.05)
 	flash_tween.tween_property(lightning_flash, "color:a", 0.0, 0.1)
+	flash_tween.tween_callback(func() -> void: SfxPlayer.play(thunder_sfx))
 
 	flash_tween.tween_interval(0.08)
 	flash_tween.tween_callback(func() -> void: lightning.visible = true)
 	flash_tween.tween_property(lightning_flash, "color:a", 0.7, 0.06)
 	flash_tween.tween_callback(func() -> void: lightning.visible = false)
 	flash_tween.tween_property(lightning_flash, "color:a", 0.0, 0.2)
+	flash_tween.tween_callback(func() -> void: SfxPlayer.play(thunder_sfx))
 
 	flash_tween.tween_interval(0.05)
 	flash_tween.tween_property(lightning_flash, "color:a", 0.4, 0.02)
 	flash_tween.tween_property(lightning_flash, "color:a", 0.0, 0.2)
+	flash_tween.tween_callback(func() -> void: SfxPlayer.play(thunder_sfx))
