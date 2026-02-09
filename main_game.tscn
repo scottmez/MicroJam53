@@ -7,8 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://b007a45axkfl6" path="res://IntroScenes/smoke.png" id="4_2pltu"]
 [ext_resource type="PackedScene" uid="uid://bwjup8rx2j37y" path="res://plane.tscn" id="4_6bm6p"]
 [ext_resource type="Script" uid="uid://cwyqiahlf1ukj" path="res://friend_nodes.gd" id="4_dugkq"]
-[ext_resource type="Shader" uid="uid://5qwj0scwrpfx" path="res://collision_shader.gdshader" id="8_4srsv"]
-[ext_resource type="Script" uid="uid://uoyf5a8l4vsh" path="res://collision_copy.gd" id="8_mf81u"]
+[ext_resource type="Shader" path="res://collision_shader.gdshader" id="8_4srsv"]
+[ext_resource type="Script" path="res://collision_copy.gd" id="8_mf81u"]
 
 [sub_resource type="Gradient" id="Gradient_light"]
 offsets = PackedFloat32Array(0, 0.4, 1)
