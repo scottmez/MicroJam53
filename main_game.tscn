@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bwjup8rx2j37y" path="res://plane.tscn" id="4_6bm6p"]
 [ext_resource type="Script" uid="uid://cwyqiahlf1ukj" path="res://friend_nodes.gd" id="4_dugkq"]
 [ext_resource type="Shader" uid="uid://5qwj0scwrpfx" path="res://collision_shader.gdshader" id="8_4srsv"]
-[ext_resource type="Script" uid="uid://uoyf5a8l4vsh" path="res://collision_copy.gd" id="8_mf81u"]
+[ext_resource type="Script" path="res://collision_copy.gd" id="8_mf81u"]
 
 [sub_resource type="Gradient" id="Gradient_light"]
 offsets = PackedFloat32Array(0, 0.4, 1)
@@ -73,8 +73,8 @@ texture_scale = 2.0
 [node name="BlackBackground" type="Sprite2D" parent="Player/Camera2D"]
 modulate = Color(0, 0, 0, 1)
 z_index = -1
-position = Vector2(-0.499981, -7.62939e-06)
-scale = Vector2(8.97656, 5.04688)
+position = Vector2(54.5, -16)
+scale = Vector2(13.0234, 7.375)
 texture = ExtResource("2_yx7mw")
 
 [node name="Plane" parent="." instance=ExtResource("4_6bm6p")]
